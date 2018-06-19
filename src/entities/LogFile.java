@@ -1,12 +1,13 @@
+package entities;
 import eduni.simjava.*;
 
 public class LogFile extends Sim_entity{
-	private Sim_port out;
+	private Sim_port in;
 	
 	public LogFile(String name) {
 		super(name);
-		out = new Sim_port("Out");
-		add_port(out);
+		in = new Sim_port("Out");
+		add_port(in);
 	}
 
 }
