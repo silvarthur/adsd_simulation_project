@@ -3,17 +3,17 @@ import eduni.simjava.*;
 import eduni.simjava.distributions.Sim_negexp_obj;
 
 public class Server extends Sim_entity{
-//	private Sim_port out;
+	private Sim_port out1;
 	private Sim_port in;
 	private Sim_negexp_obj delay;
 	
 	public Server(String name, double average) {
 		super(name);
-//		out = new Sim_port("Out");
-//		add_port(out);
-		
 		in = new Sim_port("In");
+		out1 = new Sim_port("Out1");
+		
 		add_port(in);
+		add_port(out1);
 		
 		delay = new Sim_negexp_obj("Delay", average);
 		add_generator(delay);

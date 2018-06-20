@@ -12,7 +12,7 @@ public class Simulation {
 		Sim_system.initialise();
 		Source source = new Source("Source", 100);
 		Facade facade = new Facade("Facade", 50, 10);
-		LogFile logFile = new LogFile("LogFile");
+		LogFile logFile = new LogFile("LogFile", 10);
 		Request requestGet = new Request("GETRequest", RequestType.GET);
 		Request requestPost = new Request("POSTRequest", RequestType.POST);
 		Server server = new Server("Server", 120);
@@ -26,6 +26,8 @@ public class Simulation {
 		Sim_system.link_ports("GETRequest", "Server", "Server", "In");
 		
 		Sim_system.link_ports("POSTRequest", "Server", "Server", "In");
+		
+		Sim_system.link_ports("Server", "Out1", "Source", "In");
 
 		// Configura o rastreio para o simulador para apenas entidade (default, entity, event)
 		Sim_system.set_trace_detail(false, true, false);
