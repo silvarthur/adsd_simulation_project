@@ -7,6 +7,7 @@ public class LogFile extends Sim_entity{
 	public LogFile(String name) {
 		super(name);
 		in = new Sim_port("Out");
+		
 		add_port(in);
 	}
 
