@@ -4,34 +4,37 @@ import eduni.simjava.*;
 import eduni.simjava.distributions.Sim_uniform_obj;
 
 public class Request extends Sim_entity{
-	private Sim_port server;
 	private Sim_port in;
+	private Sim_port out;
+	
 	private Sim_uniform_obj delay;
 	private RequestType type;
 	
 	public Request(String name, RequestType type) {
 		super(name);
 		this.type = type;
-		
 		this.delay = new Sim_uniform_obj("Delay", 0, 1);
+		
 		add_generator(delay);		
 		
-		
+		// Port for receiving events from the facade entity.
 		in = new Sim_port("In");
-		add_port(in);
+		// Port for sending events to the server entity.
+		out = new Sim_port("Server");
 		
-		server = new Sim_port("Server");
-		add_port(server);
+		add_port(in);
+		add_port(out);
 	}
 
 	public void body() {
 		while (Sim_system.running()) {
 			Sim_event e = new Sim_event();
-			sim_get_next(e);
-			sim_process(delay.sample());
-			sim_completed(e);
+			sim_get_next(e); // Get the next event.
+			sim_process(delay.sample()); // Process the event.
+			sim_completed(e); // The event has completed service.
+			
+			sim_schedule(out, 0.0, 1);
 			sim_trace(1, "Requisição do tipo " + this.getType().toString() + " vai para o servidor\n");
-			sim_schedule(server, 0.0, 1);
 		}
 	}
 	

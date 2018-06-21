@@ -12,48 +12,41 @@ public class Facade extends Sim_entity {
 	private Sim_port outGet;
 	private Sim_port outPost;
 
-	// Gerador de números aleatórios baseado na distribuição Normal.
-	private Sim_normal_obj delay;
+	private Sim_normal_obj delay; // Random number generator based on the normal distribution.
 	private Sim_random_obj prob;
 	
 	public Facade(String name, double average, double variance) {
 		super(name);
-		
-		this.in = new Sim_port("In");
-		this.outGet = new Sim_port("Get");
-		this.outPost = new Sim_port("Post");
-		
-		add_port(in);
-		add_port(outGet);
-		add_port(outPost);
-		
 		this.delay = new Sim_normal_obj("Delay", average, variance);
 		this.prob = new Sim_random_obj("Probability");
 		
 		add_generator(delay);
 		add_generator(prob);
+		
+		in = new Sim_port("In"); // Port for receiving events from the source entity.
+		outGet = new Sim_port("Get"); // Port for sending events to the server entity. Represents a GET Request.
+		outPost = new Sim_port("Post"); // Port for sending events to the server entity. Represents a POST Request.
+		
+		add_port(in);
+		add_port(outGet);
+		add_port(outPost);
 	}
 
 	public void body() {
 		while (Sim_system.running()) {
-			//Esta classe representa eventos que são passados ​​entre as entidades na simulação.
 			Sim_event e = new Sim_event();
-			sim_get_next(e);
-			
-			sim_process(delay.sample());
-			
-			sim_completed(e);
+			sim_get_next(e); // Get the next event.
+			sim_process(delay.sample()); // Process the event.
+			sim_completed(e); // The event has completed service.
 			
 			double p = prob.sample();
 			
 			if (p < 0.5) {
-				// 50% de chance para uma request GET.
-				sim_schedule(outGet, 0.0, 1);
-				sim_trace(1, "GET Request\n");
+				sim_schedule(outGet, 0.0, 1); // 50% chance that the entity sends a GET request.
+				sim_trace(1, "Sending a GET Request\n");
 			} else {
-				// 50% de chance para uma request POST.
-				sim_schedule(outPost, 0.0, 1);
-				sim_trace(1, "POST Request\n");
+				sim_schedule(outPost, 0.0, 1); // 50% chance that the entity sends a POST request.
+				sim_trace(1, "Sending a POST Request\n");
 			}
 		}
 	}

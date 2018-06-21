@@ -4,11 +4,6 @@ import eduni.simjava.distributions.Sim_poisson_obj;
 
 public class Source extends Sim_entity {
 	private Sim_port in, out1, out2;
-	/*
-	 * Utilizando a distribuição de Poisson 
-	 * que expressa a probabilidade de uma série de eventos ocorrer num certo período de tempo 
-	 * se estes eventos ocorrem independentemente de quando ocorreu o último evento.
-	 */
 	private Sim_poisson_obj delay;
 	
 	public Source(String name, double average) {
@@ -17,9 +12,9 @@ public class Source extends Sim_entity {
 		
 		add_generator(delay);		
 		
-		this.in = new Sim_port("In");
-		this.out1 = new Sim_port("Out1");
-		this.out2 = new Sim_port("Out2");
+		this.in = new Sim_port("In"); // Port for receiving events from the server entity.
+		this.out1 = new Sim_port("Out1"); // Port for sending events to the facade entity.
+		this.out2 = new Sim_port("Out2"); // Port for sending events to the log info entity.
 		
 		add_port(in);
 		add_port(out1);
@@ -28,14 +23,13 @@ public class Source extends Sim_entity {
 
 	public void body() {
 		for(int i = 0; i < 100; i++) {
-			sim_schedule(out1, 0.0, 0); // A porta de saída 1 leva a entidade que representa a request.
-			sim_schedule(out2, 0.0, 0); // A porta de saída 2 leva ao arquivo de log. 
+			Sim_event e = new Sim_event();
+			sim_get_next(e); // Get the next event.
+			sim_process(delay.sample()); // Process the event.
+			sim_completed(e); // The event has completed service.
 			
-			/*
-			Como enviar o evento para a porta certa?
-			Neste caso o que é recebido pela porta de entrada deve sempre ser levado para a porta
-			de saída 2.
-			*/
+			sim_schedule(out1, 0.0, 0);
+			sim_schedule(out2, 0.0, 0); 
 			
 			sim_pause(delay.sample());
 		}
