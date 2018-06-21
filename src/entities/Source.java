@@ -10,6 +10,7 @@ public class Source extends Sim_entity {
 	 * se estes eventos ocorrem independentemente de quando ocorreu o último evento.
 	 */
 	private Sim_poisson_obj delay;
+	private Sim_stat stat;
 	
 	public Source(String name, double average) {
 		super(name);
@@ -24,6 +25,12 @@ public class Source extends Sim_entity {
 		add_port(in);
 		add_port(out1);
 		add_port(out2);
+		
+		this.stat = new Sim_stat();
+		
+		stat.add_measure(Sim_stat.WAITING_TIME);
+		
+		set_stat(stat);
 	}
 
 	public void body() {
@@ -38,6 +45,7 @@ public class Source extends Sim_entity {
 			*/
 			
 			sim_pause(delay.sample());
+			
 		}
 	}
 		

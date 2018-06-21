@@ -1,3 +1,4 @@
+import eduni.simjava.Sim_stat;
 import eduni.simjava.Sim_system;
 import entities.Facade;
 import entities.LogFile;
@@ -34,5 +35,8 @@ public class Simulation {
 
 		// Executes the simulation.
 		Sim_system.run();
+		
+		// Stats do source
+		Sim_stat sourceStats = source.get_stat();
 	}
 }
