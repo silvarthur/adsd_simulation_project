@@ -13,7 +13,7 @@ public class Server extends Sim_entity{
 		in1 = new Sim_port("In1"); // Port for receiving events from the request? entity.
 		in2 = new Sim_port("In2"); // Port for receiving events from the database entity.
 		out1 = new Sim_port("Out1"); // Port for sending events to the source entity.
-		out1 = new Sim_port("Out2"); // Port for sending events to the database entity.
+		out2 = new Sim_port("Out2"); // Port for sending events to the database entity.
 		
 		add_port(in1);
 		add_port(in2);

@@ -16,7 +16,7 @@ public class Request extends Sim_entity{
 		this.delay = delay;
 		
 		in = new Sim_port("In"); // Port for receiving events from the facade entity.
-		out = new Sim_port("Server"); // Port for sending events to the server entity.
+		out = new Sim_port("Out"); // Port for sending events to the server entity.
 		
 		add_port(in);
 		add_port(out);

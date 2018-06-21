@@ -13,16 +13,16 @@ public class Simulation {
 		Source source = new Source("Source", 100);
 		Facade facade = new Facade("Facade", 50, 10);
 		LogFile logFile = new LogFile("LogFile", 10);
-		Request getRequest = new Request("GETRequest", RequestType.GET);
-		Request postRequest = new Request("POSTRequest", RequestType.POST);
+		Request getRequest = new Request("GETRequest", 10, RequestType.GET);
+		Request postRequest = new Request("POSTRequest", 10, RequestType.POST);
 		Server server = new Server("Server", 120);
 		Database databse = new Database("Database", 10);
 		
 		Sim_system.link_ports("Source", "Out1", "Facade", "In");
 		Sim_system.link_ports("Source", "Out2", "LogFile", "In");
 		
-		Sim_system.link_ports("Facade", "outGet", "GETRequest", "In");
-		Sim_system.link_ports("Facade", "outPost", "POSTRequest", "In");
+		Sim_system.link_ports("Facade", "Get", "GETRequest", "In");
+		Sim_system.link_ports("Facade", "Post", "POSTRequest", "In");
 		
 		Sim_system.link_ports("GETRequest", "Out", "Server", "In1");
 		Sim_system.link_ports("POSTRequest", "Out", "Server", "In1");
