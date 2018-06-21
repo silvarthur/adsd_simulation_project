@@ -1,13 +1,30 @@
 package entities;
 import eduni.simjava.*;
+import eduni.simjava.distributions.Sim_negexp_obj;
 
 public class LogFile extends Sim_entity{
 	private Sim_port in;
+	private Sim_negexp_obj delay;
 	
-	public LogFile(String name) {
+	public LogFile(String name, double average) {
 		super(name);
-		in = new Sim_port("Out");
+
+		in = new Sim_port("In");
 		add_port(in);
+		
+		delay = new Sim_negexp_obj("Delay", average);
+		add_generator(delay);
 	}
 
+	public void body() {
+		while (Sim_system.running()) {
+			Sim_event e = new Sim_event();
+			sim_get_next(e);
+			sim_process(delay.sample());
+			sim_completed(e);
+			
+			sim_trace(1, "Salvando requisição no log file.");
+		}
+	}
+	
 }

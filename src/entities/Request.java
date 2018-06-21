@@ -30,7 +30,8 @@ public class Request extends Sim_entity{
 			sim_get_next(e);
 			sim_process(delay.sample());
 			sim_completed(e);
-			sim_trace(1, "Requisição do tipo " + this.getType().toString() + " vai para o servidor\n");
+			
+			sim_trace(1, "Requisição do tipo " + this.getType().toString() + " vai para o servidor");
 			sim_schedule(server, 0.0, 1);
 		}
 	}
