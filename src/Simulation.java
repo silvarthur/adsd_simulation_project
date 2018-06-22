@@ -33,6 +33,7 @@ public class Simulation {
 		Sim_system.link_ports("RequestPOST", "Server", "Server", "In");
 		
 		Sim_system.link_ports("Server", "DbPort", "Database", "In");
+		Sim_system.link_ports("Database", "ServerPort", "Server", "InDb");
 		Sim_system.link_ports("Server", "RoboPort", "Robo", "ServePort");
 		
 		Sim_system.set_trace_detail(false, true, false);

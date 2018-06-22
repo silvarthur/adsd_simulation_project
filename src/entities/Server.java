@@ -3,7 +3,7 @@ import eduni.simjava.*;
 import eduni.simjava.distributions.Sim_negexp_obj;
 
 public class Server extends Sim_entity{
-	private Sim_port in, dbPort, roboPort;
+	private Sim_port in, inDb, dbPort, roboPort;
 	private Sim_negexp_obj delay;
 	private Sim_stat stat;
 	
@@ -12,6 +12,9 @@ public class Server extends Sim_entity{
 
 		this.in = new Sim_port("In");
 		add_port(in);
+		
+		this.inDb = new Sim_port("InDb");
+		add_port(inDb);
 		
 		this.dbPort = new Sim_port("DbPort");
 		add_port(dbPort);
@@ -45,7 +48,6 @@ public class Server extends Sim_entity{
 			
 			try {
 				String nameEvent = Sim_system.get_entity(e.get_src()).get_name();
-				System.out.println(nameEvent);
 				
 				if (nameEvent.equals("Database")) {
 					sim_trace(1, "Enviando reposta do servidor para o robo.");
