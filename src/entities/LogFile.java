@@ -3,16 +3,19 @@ import eduni.simjava.*;
 import eduni.simjava.distributions.Sim_negexp_obj;
 
 public class LogFile extends Sim_entity{
-	private Sim_port in;
+	private Sim_port inFromRobot;
+	
 	private Sim_negexp_obj delay;
 	
 	public LogFile(String name, double average) {
 		super(name);
-
-		in = new Sim_port("In");
-		add_port(in);
 		
 		delay = new Sim_negexp_obj("Delay", average);
+
+		inFromRobot = new Sim_port("InFromRobot");
+		
+		add_port(inFromRobot);
+
 		add_generator(delay);
 	}
 
@@ -23,7 +26,7 @@ public class LogFile extends Sim_entity{
 			sim_process(delay.sample());
 			sim_completed(e);
 			
-			sim_trace(1, "Salvando requisição no log file.");
+			sim_trace(1, "Saving request in the log file.");
 		}
 	}
 	

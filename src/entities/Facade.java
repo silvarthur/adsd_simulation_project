@@ -9,29 +9,32 @@ import eduni.simjava.distributions.Sim_normal_obj;
 import eduni.simjava.distributions.Sim_random_obj;
 
 public class Facade extends Sim_entity {
-	private Sim_port in, get, post;
+	private Sim_port inFromRobot, outToGet, outToPost;
+	
 	private Sim_normal_obj delay;
 	private Sim_random_obj prob;
+	
 	private Sim_stat stat;
 	
 	public Facade(String name, double average, double variance) {
 		super(name);
 		
-		this.in = new Sim_port("In");
-		this.get = new Sim_port("Get");
-		this.post = new Sim_port("Post");
-		
-		add_port(in);
-		add_port(get);
-		add_port(post);
-		
 		this.delay = new Sim_normal_obj("Delay", average, variance);
 		this.prob = new Sim_random_obj("Probability");
 		
+		stat = new Sim_stat();
+		
+		this.inFromRobot = new Sim_port("InFromRobot");
+		this.outToGet = new Sim_port("OutToGet");
+		this.outToPost = new Sim_port("OutToPost");
+		
+		add_port(inFromRobot);
+		add_port(outToGet);
+		add_port(outToPost);
+		
 		add_generator(delay);
 		add_generator(prob);
-		
-		stat = new Sim_stat();
+
 		stat.add_measure(Sim_stat.QUEUE_LENGTH);
 		
 		set_stat(stat);
@@ -47,11 +50,11 @@ public class Facade extends Sim_entity {
 			double p = prob.sample();
 			
 			if (p < 0.5) {
-				sim_schedule(get, 0.0, 1);
-				sim_trace(1, "Requisição GET");
+				sim_schedule(outToGet, 0.0, 1);
+				sim_trace(1, "GET Request.");
 			} else {
-				sim_schedule(post, 0.0, 1);
-				sim_trace(1, "Requisição POST");
+				sim_schedule(outToPost, 0.0, 1);
+				sim_trace(1, "POST Request.");
 			}
 		}
 	}
