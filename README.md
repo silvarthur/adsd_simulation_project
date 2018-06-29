@@ -26,5 +26,5 @@
 
 <div class="text-justify">
 	<!-- Lembrar de colocar o link do sim_report -->
-	&nbsp;&nbsp;&nbsp;&nbsp;Nesse  <a href=""> documento</a> voce poderá ver as métricas coletadas durante a execução da simulação.
-<div> 
+	&nbsp;&nbsp;&nbsp;&nbsp;Nesse  <a href="https://raw.githubusercontent.com/silvarthur/adsd_simulation_project/master/sim_report"> documento</a> voce poderá ver as métricas coletadas durante a execução da simulação.
+<div>
