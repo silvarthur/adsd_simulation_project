@@ -20,8 +20,8 @@ public class Simulation {
 		Request getRequest = new Request("GETRequest", RequestType.GET);
 		Request postRequest = new Request("POSTRequest", RequestType.POST);
 		Server server = new Server("Server", 120);
-		LogFile logFile = new LogFile("LogFile", 100);
-		Database database = new Database("Database", 100);
+		LogFile logFile = new LogFile("LogFile", 120);
+		Database database = new Database("Database", 120);
 		
 		Sim_system.link_ports("Source", "OutToRobot", "Robot", "InFromSource");
 		Sim_system.link_ports("Robot", "OutToFacade", "Facade", "InFromRobot");

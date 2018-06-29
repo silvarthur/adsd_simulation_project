@@ -3,17 +3,21 @@ package entities;
 import eduni.simjava.Sim_entity;
 import eduni.simjava.Sim_event;
 import eduni.simjava.Sim_port;
+import eduni.simjava.Sim_stat;
 import eduni.simjava.Sim_system;
 import eduni.simjava.distributions.Sim_poisson_obj;
 
 public class Robot extends Sim_entity {
 	private Sim_port inFromSource, inFromServer, outToFacade, outToLogFile;
 	private Sim_poisson_obj delay;
+	private Sim_stat stat;
 	
 	public Robot(String name, double average) {
 		super(name);
 		
 		this.delay = new Sim_poisson_obj("Delay", average);
+		
+		this.stat = new Sim_stat();
 		
 		this.inFromSource = new Sim_port("InFromSource");
 		this.inFromServer = new Sim_port("InFromServer");		
@@ -26,6 +30,14 @@ public class Robot extends Sim_entity {
 		add_port(outToLogFile);
 		
 		add_generator(delay);
+		
+		this.stat.add_measure(Sim_stat.ARRIVAL_RATE);
+		this.stat.add_measure(Sim_stat.QUEUE_LENGTH);
+		this.stat.add_measure(Sim_stat.WAITING_TIME);
+		this.stat.add_measure(Sim_stat.UTILISATION);
+		this.stat.add_measure(Sim_stat.RESIDENCE_TIME);
+		
+		set_stat(stat);
 	}
 	
 	public void body() {

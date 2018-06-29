@@ -35,7 +35,11 @@ public class Facade extends Sim_entity {
 		add_generator(delay);
 		add_generator(prob);
 
-		stat.add_measure(Sim_stat.QUEUE_LENGTH);
+		this.stat.add_measure(Sim_stat.ARRIVAL_RATE);
+		this.stat.add_measure(Sim_stat.QUEUE_LENGTH);
+		this.stat.add_measure(Sim_stat.WAITING_TIME);
+		this.stat.add_measure(Sim_stat.UTILISATION);
+		this.stat.add_measure(Sim_stat.RESIDENCE_TIME);
 		
 		set_stat(stat);
 	}

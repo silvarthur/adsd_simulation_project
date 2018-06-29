@@ -4,9 +4,7 @@ import eduni.simjava.distributions.Sim_negexp_obj;
 
 public class Server extends Sim_entity{
 	private Sim_port inFromRequest, inFromDatabase, outToDatabase, outToRobot;
-	
 	private Sim_negexp_obj delay;
-	
 	private Sim_stat stat;
 	
 	public Server(String name, double average) {

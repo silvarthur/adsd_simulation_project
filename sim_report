@@ -1,0 +1,272 @@
+############################################################
+#                                                          #
+#                    SIMULATION REPORT                     #
+#                                                          #
+############################################################
+
+Version: SimJava 2.0
+
+Simulation date:         28 de Junho de 2018
+Simulation start time:   22h39min53s BRT
+Simulation end time:     22h39min53s BRT
+
+############################################################
+#            Overall simulation run information            #
+############################################################
+
+Total simulated time:    25141.062161251935
+Total transient time:    0.0
+Total steady state time: 25141.062161251935
+Transient condition:     None
+Termination condition:   None
+Output analysis method:  None
+
+############################################################
+#               Simulation run measurements                #
+############################################################
+
+-------------------------- Robot ---------------------------
+
+- Arrival rate
+
+Sample mean:          0.007955113380541464
+Event count:          200
+
+- Queue length
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              1.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              0.0
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          0.0
+
+- Residence time
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              0.0
+Minimum:              0.0
+
+-------------------------- Facade --------------------------
+
+- Arrival rate
+
+Sample mean:          0.003977556690270732
+Event count:          100
+
+- Queue length
+
+Sample mean:          9.77511787019232
+Sample variance:      552.3251750291464
+Sample std deviation: 23.50159941427703
+Maximum:              99.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          2457.568460080697
+Sample variance:      2081451.2849682858
+Sample std deviation: 1442.7235649868223
+Maximum:              4927.835867408639
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          0.19784620032664746
+
+- Residence time
+
+Sample mean:          2507.309096288495
+Sample variance:      2081912.8210167969
+Sample std deviation: 1442.8835091637845
+Maximum:              4974.063620779747
+Minimum:              51.058137279096464
+
+------------------------ GETRequest ------------------------
+
+- Arrival rate
+
+Sample mean:          0.0017899005106218296
+Event count:          45
+
+- Queue length
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              1.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              0.0
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          9.262674207777925E-4
+
+- Residence time
+
+Sample mean:          0.5174965956381552
+Sample variance:      0.07556979499505094
+Sample std deviation: 0.2748996089394289
+Maximum:              0.9802806652059246
+Minimum:              0.013186721603005935
+
+----------------------- POSTRequest ------------------------
+
+- Arrival rate
+
+Sample mean:          0.002187656179648903
+Event count:          55
+
+- Queue length
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              1.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          0.0
+Sample variance:      0.0
+Sample std deviation: 0.0
+Maximum:              0.0
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          0.0010523902510104523
+
+- Residence time
+
+Sample mean:          0.48105834033726014
+Sample variance:      0.09917128048333883
+Sample std deviation: 0.3149147193818333
+Maximum:              0.9710382418570589
+Minimum:              0.01346004941206047
+
+-------------------------- Server --------------------------
+
+- Arrival rate
+
+Sample mean:          0.007955113380541464
+Event count:          200
+
+- Queue length
+
+Sample mean:          51.24171068630912
+Sample variance:      767.2724449483685
+Sample std deviation: 27.699683119999197
+Maximum:              89.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          6441.3551680669225
+Sample variance:      1.0671322111184653E7
+Sample std deviation: 3266.698962436645
+Maximum:              10552.585601217887
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          0.9403681007553312
+
+- Residence time
+
+Sample mean:          6559.564432444663
+Sample variance:      1.0710555035451727E7
+Sample std deviation: 3272.698433319472
+Maximum:              10709.644482690337
+Minimum:              56.233304449821034
+
+------------------------- LogFile --------------------------
+
+- Arrival rate
+
+Sample mean:          0.003977556690270732
+Event count:          100
+
+- Queue length
+
+Sample mean:          1.954048523643904
+Sample variance:      11.1165112490964
+Sample std deviation: 3.3341432556350066
+Maximum:              13.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          491.26855399033985
+Sample variance:      251217.46353251603
+Sample std deviation: 501.2159849132069
+Maximum:              1544.5827015917203
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          0.5157877812826496
+
+- Residence time
+
+Sample mean:          620.9430807027526
+Sample variance:      264431.7961317944
+Sample std deviation: 514.229322512626
+Maximum:              1765.582498640506
+Minimum:              7.4932439723015705
+
+------------------------- Database -------------------------
+
+- Arrival rate
+
+Sample mean:          0.003977556690270732
+Event count:          100
+
+- Queue length
+
+Sample mean:          1.4445989830996404
+Sample variance:      4.642104546630668
+Sample std deviation: 2.1545543730968286
+Maximum:              9.0
+Minimum:              0.0
+
+- Waiting time
+
+Sample mean:          363.18752832189404
+Sample variance:      124386.83596313655
+Sample std deviation: 352.6851796760626
+Maximum:              1241.7364914652862
+Minimum:              0.0
+
+- Utilisation
+
+Sample mean:          0.5196090506954065
+
+- Residence time
+
+Sample mean:          493.82276275271715
+Sample variance:      134999.73267795346
+Sample std deviation: 367.42309763806827
+Maximum:              1312.197348266027
+Minimum:              0.02623067988679395
+

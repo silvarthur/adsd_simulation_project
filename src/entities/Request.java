@@ -8,6 +8,8 @@ public class Request extends Sim_entity{
 	
 	private Sim_uniform_obj delay;
 	
+	private Sim_stat stat;
+	
 	private RequestType type;
 	
 	public Request(String name, RequestType type) {
@@ -16,13 +18,24 @@ public class Request extends Sim_entity{
 		
 		this.delay = new Sim_uniform_obj("Delay", 0, 1);
 
-		inFromFacade = new Sim_port("InFromFacade");
-		outToServer = new Sim_port("OutToServer");
+		this.stat = new Sim_stat();
+		
+		this.inFromFacade = new Sim_port("InFromFacade");
+		this.outToServer = new Sim_port("OutToServer");
 		
 		add_port(inFromFacade);
 		add_port(outToServer);
 		
 		add_generator(delay);
+		
+		this.stat.add_measure(Sim_stat.ARRIVAL_RATE);
+		this.stat.add_measure(Sim_stat.QUEUE_LENGTH);
+		this.stat.add_measure(Sim_stat.WAITING_TIME);
+		this.stat.add_measure(Sim_stat.UTILISATION);
+		this.stat.add_measure(Sim_stat.RESIDENCE_TIME);
+		
+		set_stat(stat);
+		
 	}
 
 	public void body() {
